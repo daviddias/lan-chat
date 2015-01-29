@@ -2,7 +2,7 @@
   "name": "lan-chat",
   "version": "0.0.0",
   "description": "Chat for you and your friends during those trainings, hackathons, lans, and other events where the wan never works",
-  "main": "src/bin/index.js",
+  "bin": "src/bin/index.js",
   "scripts": {
      "codestyle": "./node_modules/.bin/jscs src/lib/*.js src/bin/*.js tests/*.js",
      "lint": "./node_modules/.bin/jshint .",
