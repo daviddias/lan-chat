@@ -26,7 +26,7 @@
     "0mq",
     "zmq"
   ],
-  "author": "David Dias, Gonçalo Pestana",
+  "author": "David Dias, Gonçalo Pestana, Alexandre Campos",
   "license": "none",
   "bugs": {
     "url": "https://github.com/diasdavid/lan-chat/issues"
