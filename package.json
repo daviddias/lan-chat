@@ -4,15 +4,15 @@
   "description": "Chat for you and your friends during those trainings, hackathons, lans, and other events where the wan never works",
   "bin": "src/bin/index.js",
   "scripts": {
-     "codestyle": "./node_modules/.bin/jscs src/lib/*.js src/bin/*.js tests/*.js",
-     "lint": "./node_modules/.bin/jshint .",
-     "test": "node ./node_modules/.bin/lab -r tap tests/*-test.js | ./node_modules/.bin/tap-spec",
-     "test-cov": "node ./node_modules/.bin/lab -t 100 tests/*-test.js",
-     "test-cov-html": "node ./node_modules/.bin/lab -r html -o coverage.html tests/*-test.js"
+    "codestyle": "./node_modules/.bin/jscs src/lib/*.js src/bin/*.js tests/*.js",
+    "lint": "./node_modules/.bin/jshint .",
+    "test": "node ./node_modules/.bin/lab -r tap tests/*-test.js | ./node_modules/.bin/tap-spec",
+    "test-cov": "node ./node_modules/.bin/lab -t 100 tests/*-test.js",
+    "test-cov-html": "node ./node_modules/.bin/lab -r html -o coverage.html tests/*-test.js"
   },
   "precommit": [
-     "codestyle",
-     "lint"
+    "codestyle",
+    "lint"
   ],
   "repository": {
     "type": "git",
@@ -33,6 +33,8 @@
   },
   "homepage": "https://github.com/diasdavid/lan-chat",
   "dependencies": {
+    "duplex": "^1.0.0",
+    "event-stream": "^3.2.1",
     "generator-ronin": "^0.1.2",
     "ronin": "^0.2.0",
     "yo": "^1.4.5",
