@@ -2,10 +2,18 @@
   "name": "lan-chat",
   "version": "0.0.0",
   "description": "Chat for you and your friends during those trainings, hackathons, lans, and other events where the wan never works",
-  "main": "bin/index.js",
+  "main": "src/bin/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 0"
+     "codestyle": "./node_modules/.bin/jscs src/lib/*.js src/bin/*.js tests/*.js",
+     "lint": "./node_modules/.bin/jshint .",
+     "test": "node ./node_modules/.bin/lab -r tap tests/*-test.js | ./node_modules/.bin/tap-spec",
+     "test-cov": "node ./node_modules/.bin/lab -t 100 tests/*-test.js",
+     "test-cov-html": "node ./node_modules/.bin/lab -r html -o coverage.html tests/*-test.js"
   },
+  "precommit": [
+     "codestyle",
+     "lint"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/diasdavid/lan-chat.git"
