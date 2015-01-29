@@ -37,7 +37,6 @@
     "event-stream": "^3.2.1",
     "generator-ronin": "^0.1.2",
     "ronin": "^0.2.0",
-    "yo": "^1.4.5",
     "zmq": "^2.10.0"
   },
   "devDependencies": {
