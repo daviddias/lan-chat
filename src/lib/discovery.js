@@ -7,8 +7,12 @@ var subnet = 'tcp://192.168.2.';
 //#TODO: dynamic check
 var scrape = function(cb) {
     console.log('scrapping network...');
+    var ourIp = ip.address();
+    var lastByte = ourIp.split('.')[3];
     for (var i = 1; i < 255; i++) {
-        subscribeAttempt(subnet + i + PORT);
+        if (i !== lastByte) {
+            subscribeAttempt(subnet + i + PORT);
+        }
     }
     cb();
 };
