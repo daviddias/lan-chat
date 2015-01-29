@@ -1,0 +1,41 @@
+{
+  "name": "lan-chat",
+  "version": "0.0.0",
+  "description": "Chat for you and your friends during those trainings, hackathons, lans, and other events where the wan never works",
+  "main": "bin/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/diasdavid/lan-chat.git"
+  },
+  "keywords": [
+    "events",
+    "lan",
+    "p2p",
+    "chat",
+    "0mq",
+    "zmq"
+  ],
+  "author": "David Dias, Gonçalo Pestana",
+  "license": "none",
+  "bugs": {
+    "url": "https://github.com/diasdavid/lan-chat/issues"
+  },
+  "homepage": "https://github.com/diasdavid/lan-chat",
+  "dependencies": {
+    "generator-ronin": "^0.1.2",
+    "ronin": "^0.2.0",
+    "yo": "^1.4.5",
+    "zmq": "^2.10.0"
+  },
+  "devDependencies": {
+    "code": "^1.3.0",
+    "jscs": "^1.10.0",
+    "jshint": "^2.6.0",
+    "lab": "^5.2.1",
+    "precommit-hook": "^1.0.7",
+    "tap-spec": "^2.2.0"
+  }
+}
