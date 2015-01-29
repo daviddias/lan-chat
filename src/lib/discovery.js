@@ -10,7 +10,7 @@ var scrape = function(cb) {
     var ourIp = ip.address();
     var lastByte = ourIp.split('.')[3];
     for (var i = 1; i < 255; i++) {
-        if (i !== lastByte) {
+        if (i !== parseInt(lastByte)) {
             subscribeAttempt(subnet + i + PORT);
         }
     }
