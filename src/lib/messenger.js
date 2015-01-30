@@ -16,7 +16,7 @@ function Messenger() {
     var peers = {};
 
     self.start = function(cb) {
-        router.connect(address + ':' + routerPort);
+        router.bindSync(address + ':' + routerPort);
         console.log('router started on: ' + address + ':' +  routerPort);
         router.on('message', function(envelope, data) {
             data = JSON.parse(data.toString('utf8'));
@@ -65,17 +65,12 @@ function Messenger() {
         function attempt(uri) {
             var dealer = zmq.socket('dealer');
 
-            dealer.bind(uri, function(err) {
-                if (err) {
-                    return; // console.error('ERROR:[dealer] ' + err);
-                }
+            dealer.connect(uri);
 
-                // console.log('BINGO: ', uri);
-                dealer.send(JSON.stringify({type: 'pub-request',
+            // console.log('BINGO: ', uri);
+            dealer.send(JSON.stringify({type: 'pub-request',
                                             port: pubPort, ip: address}));
-                dealer.send(JSON.stringify({type: 'sub-request'}));
-
-            });
+            dealer.send(JSON.stringify({type: 'sub-request'}));
 
             dealer.on('message', function(data) {
                 // sub to given data.ip + data.port
