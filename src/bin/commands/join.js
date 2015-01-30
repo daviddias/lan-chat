@@ -30,7 +30,8 @@ var LanChat = Command.extend({
         var lineStream = duplex();
         reader(lineStream);
         lineStream.on('_data', function(data){
-            console.log('a enviar:', data);
+            console.log(name + ' > ' + data);
+            messenger.send(name + ' > ' + data);
         });
 
     }

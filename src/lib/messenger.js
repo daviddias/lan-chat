@@ -90,13 +90,17 @@ function Messenger() {
         var peerId = ip + ':' + port;
 
         if (!peers[peerId]) {
-
+            var sub = zmq.socket('sub');
+            sub.connect(peerId);
+            sub.subscribe('');
+            sub.on('message', self.print);
+            peers[peerId] = sub;
         } else {
             // already had subscribed to this one
         }
     };
 
     self.print = function(text) {
-        console.log(text);
+        console.log(text.toString('utf8'));
     };
 }
