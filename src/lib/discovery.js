@@ -8,7 +8,8 @@ var subnet = 'tcp://192.168.2.';
 var scrape = function(cb) {
     console.log('scrapping network...');
     var ourIp = ip.address();
-    var lastByte = ourIp.split('.')[3];
+    var lastByte = parseInt(ourIp.split('.')[3]);
+    console.log(lastByte);
     for (var i = 1; i < 255; i++) {
         if (i !== lastByte) {
             subscribeAttempt(subnet + i + PORT);
