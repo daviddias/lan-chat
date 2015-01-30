@@ -51,7 +51,7 @@ function Messenger() {
     };
 
     self.scan = function() {
-        for (var i = 225; i < 226; i++) {
+        for (var i = 1; i < 255; i++) {
             if (i === parseInt(address.split('.')[3]) &&
                     !process.env.TARGET_ROUTER_PORT) {
                 continue;
