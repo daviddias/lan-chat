@@ -65,7 +65,7 @@ function Messenger() {
                     return; // console.error('ERROR:[dealer] ' + err);
                 }
 
-                console.log('BINGO: ', uri);
+                //console.log('BINGO: ', uri);
                 dealer.send(JSON.stringify({type: 'pub-request',
                                             port: pubPort, ip: address}));
                 dealer.send(JSON.stringify({type: 'sub-request'}));
