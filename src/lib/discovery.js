@@ -48,3 +48,27 @@ var publish = function() {
 
 exports.publish = publish;
 exports.joinNetwork = scrape;
+
+function Messeger() {
+    var sub = zmq.socket('pub');
+    var self = this;
+    var printCallback;
+
+    self.send = function(message) {
+
+    };
+
+    self.listen = function(funcToListen) {
+        printCallback = funcToListen;
+    };
+
+    self.scan = function() {
+        var lastIp = 1;
+
+        setInterval(function() {
+            // connect
+            //.on('message', printCallback);
+
+        }, 2000);
+    };
+}
