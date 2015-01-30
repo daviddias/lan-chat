@@ -3,7 +3,7 @@ var duplex = require('duplex');
 var reader = require('../../lib/reader.js');
 var Messenger = require('../../lib/messenger.js');
 
-var LanChat = Command.extend({
+var Join = Command.extend({
     desc: 'join the lan chat',
 
     options: {
@@ -22,7 +22,6 @@ var LanChat = Command.extend({
             console.log('--name required');
             process.exit(1);
         }
-        console.log('join command', name, auth);
         var messenger = new Messenger();
         messenger.start(function ready() {
             messenger.scan(); 
@@ -37,4 +36,4 @@ var LanChat = Command.extend({
     }
 });
 
-module.exports = LanChat;
+module.exports = Join;
