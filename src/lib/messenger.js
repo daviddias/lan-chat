@@ -13,6 +13,8 @@ function Messenger() {
     var pub = zmq.socket('pub');
     var router = zmq.socket('router');
 
+    var peers = {};
+
     self.start = function(cb) {
         router.connect(address + ':' + routerPort);
         console.log('router started on: ' + address + ':' +  routerPort);
@@ -20,11 +22,14 @@ function Messenger() {
             data = JSON.parse(data.toString('utf8'));
             if (data.type === 'pub-request') {
                 console.log('pub-request received');
-
-                self.subscribe();
+                self.subscribe(data.ip, data.port);
             }
 
             if (data.type === 'sub-request') {
+                router.send([
+                    envelope,
+                    JSON.stringify({port: pubPort, ip: address})
+                ]);
                 console.log('sub-request received');
                 // tell the guy what are my ip and port for pub sub
             }
@@ -46,7 +51,7 @@ function Messenger() {
     };
 
     self.scan = function() {
-        for (var i = 1; i < 255; i++) {
+        for (var i = 225; i < 226; i++) {
             if (i === parseInt(address.split('.')[3]) &&
                     !process.env.TARGET_ROUTER_PORT) {
                 continue;
@@ -70,15 +75,28 @@ function Messenger() {
                                             port: pubPort, ip: address}));
                 dealer.send(JSON.stringify({type: 'sub-request'}));
 
-                dealer.on('message', function(data) {
-                    // sub to given data.ip + data.port
-                    console.log(data.port + data.ip);
-                });
             });
+
+            dealer.on('message', function(data) {
+                // sub to given data.ip + data.port
+                data = JSON.parse(data);
+                console.log('I should sub this too: ', data.ip, data.port);
+            });
+
         }
     };
 
     self.subscribe = function(ip, port) {
+        var peerId = ip + ':' + port;
 
+        if (!peers[peerId]) {
+
+        } else {
+            // already had subscribed to this one
+        }
+    };
+
+    self.print = function(text) {
+        console.log(text);
     };
 }
