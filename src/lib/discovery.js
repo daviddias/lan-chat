@@ -11,7 +11,7 @@ var scrape = function(cb) {
     var lastByte = parseInt(ourIp.split('.')[3]);
     console.log(lastByte);
     for (var i = 1; i < 255; i++) {
-        if (i !== lastByte) {
+        if (i !== parseInt(lastByte)) {
             subscribeAttempt(subnet + i + PORT);
         }
     }
@@ -49,3 +49,27 @@ var publish = function() {
 
 exports.publish = publish;
 exports.joinNetwork = scrape;
+
+function Messeger() {
+    var sub = zmq.socket('pub');
+    var self = this;
+    var printCallback;
+
+    self.send = function(message) {
+
+    };
+
+    self.listen = function(funcToListen) {
+        printCallback = funcToListen;
+    };
+
+    self.scan = function() {
+        var lastIp = 1;
+
+        setInterval(function() {
+            // connect
+            //.on('message', printCallback);
+
+        }, 2000);
+    };
+}
