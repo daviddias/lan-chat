@@ -8,7 +8,10 @@
     "lint": "./node_modules/.bin/jshint .",
     "test": "node ./node_modules/.bin/lab -r tap tests/*-test.js | ./node_modules/.bin/tap-spec",
     "test-cov": "node ./node_modules/.bin/lab -t 100 tests/*-test.js",
-    "test-cov-html": "node ./node_modules/.bin/lab -r html -o coverage.html tests/*-test.js"
+    "test-cov-html": "node ./node_modules/.bin/lab -r html -o coverage.html tests/*-test.js",
+    "c1": "ROUTER_PORT=6010 PUB_PORT=6011 TARGET_ROUTER_PORT=6020 ./src/bin/index.js join -n client1",
+    "c2": "ROUTER_PORT=6020 PUB_PORT=6021 TARGET_ROUTER_PORT=6010 ./src/bin/index.js join -n client2"
+
   },
   "precommit": [
     "codestyle",

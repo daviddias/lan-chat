@@ -47,11 +47,13 @@ function Messenger() {
 
     self.scan = function() {
         for (var i = 1; i < 255; i++) {
-            if (i === parseInt(address.split('.')[3])) {
+            if (i === parseInt(address.split('.')[3]) &&
+                    !process.env.TARGET_ROUTER_PORT) {
                 continue;
             }
-
-            attempt(subnet + '.' + i + ':' + routerPort);
+            var targetAddress = subnet + '.' + i + ':' +
+                (process.env.TARGET_ROUTER_PORT || routerPort);
+            attempt(targetAddress);
         }
 
         function attempt(uri) {
@@ -64,7 +66,7 @@ function Messenger() {
 
                 console.log('BINGO: ', uri);
                 dealer.send(JSON.stringify({type: 'pub-request',
-                                            port: 'myport', ip: 'myip'}));
+                                            port: pubPort, ip: address}));
                 dealer.send(JSON.stringify({type: 'sub-request'}));
 
                 dealer.on('message', function(data) {
