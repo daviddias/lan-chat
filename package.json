@@ -1,6 +1,6 @@
 {
   "name": "lan-chat",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Chat for you and your friends during those trainings, hackathons, lans, and other events where the wan never works",
   "bin": "src/bin/index.js",
   "scripts": {
