@@ -53,6 +53,7 @@ function Messenger() {
             }
             var targetAddress = subnet + '.' + i + ':' +
                 (process.env.TARGET_ROUTER_PORT || routerPort);
+            // console.log('target: ', targetAddress);
             attempt(targetAddress);
         }
 
