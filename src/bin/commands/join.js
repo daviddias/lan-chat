@@ -1,6 +1,7 @@
 var Command = require('ronin').Command;
-var reader = require('../../lib/reader.js');
 var duplex = require('duplex');
+var reader = require('../../lib/reader.js');
+var Messenger = require('../../lib/messenger.js');
 
 var LanChat = Command.extend({
     desc: 'join the lan chat',
@@ -22,10 +23,14 @@ var LanChat = Command.extend({
             process.exit(1);
         }
         console.log('join command', name, auth);
+        var messenger = new Messenger();
+        messenger.start(function ready() {
+            messenger.scan(); 
+        });
         var lineStream = duplex();
         reader(lineStream);
         lineStream.on('_data', function(data){
-            console.log('data', data);
+            console.log('a enviar:', data);
         });
 
     }
